@@ -12,7 +12,6 @@ export const ProductDetails = ({
   description,
   featuredProductImage,
   productImagesCollection,
-  test,
   sys: { id: entryId },
 }: PageProductFieldsFragment) => {
   const theme = useTheme();
@@ -54,10 +53,9 @@ export const ProductDetails = ({
             px={{ base: 4, lg: 6 }}
             pt={{ base: 6, lg: 6 }}
             pb={{ base: 8, lg: 14 }}>
-            <Heading as="h1" variant="h3">
+            <Heading {...inspectorProps({ fieldId: 'name' })} as="h1" variant="h3">
               {name}
             </Heading>
-            <Text {...inspectorProps({ fieldId: 'test' })}>{test}</Text>
             {price && (
               <Text {...inspectorProps({ fieldId: 'price' })} mt={1} fontWeight="500">
                 <FormatCurrency value={price} />
