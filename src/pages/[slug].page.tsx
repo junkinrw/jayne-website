@@ -11,9 +11,12 @@ import { getServerSideTranslations } from '@src/pages/utils/get-serverside-trans
 const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { t } = useTranslation();
   const product = useContentfulLiveUpdates(props.product);
-
+  console.log('PROJECT');
   return (
     <>
+      <p>our page</p>
+      {product.seoFields && <SeoFields {...product.seoFields} />}
+
       {product.seoFields && <SeoFields {...product.seoFields} />}
       <ProductDetails {...product} />
       {product.relatedProductsCollection?.items && (
@@ -45,7 +48,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params, locale, p
   try {
     const data = await gqlClient.pageProduct({ slug: params.slug.toString(), locale, preview });
     const product = data.pageProductCollection?.items[0];
-
     if (!product) {
       return {
         notFound: true,
