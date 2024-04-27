@@ -33,7 +33,6 @@ export const Header = (props: BoxProps) => {
           title={t('common.logoImageAltText')}
         />
       </Link>
-      <LanguageSelector />
     </Flex>
   );
 };
